@@ -21,11 +21,20 @@ var menuItems = [
   }
 ];
 
+var gameObjects = [];
+
+
+
 // keeps track of the last apple placed on the tree, in order to spread apples
 var lastApple = {x:0, y:0};
 
+var gameObjects = {
+  still : [],
+  moving : []
+};
 
 $(document).ready(function(){
+
 
   // adjust canvas and branch size to current window
   var cSize = $(".treeWrapper").innerWidth();
@@ -37,10 +46,14 @@ $(document).ready(function(){
   var l = cSize/14;
   var w = cSize/60;
 
+  console.log(ctx)
+
   canvas.width = cSize;
   canvas.height = cSize;
 
-  var menuItems = ['contact', 'about', 'github'];
+  var newCanon = canon(cSize * 0.1, cSize  * 0.93, ctx);
+  gameObjects.moving.push(newCanon)
+  newCanon.draw();
 
-  drawBranch(ctx, x, y, l, -Math.PI/2, 11, w, menuItems, {x:0,y:0});
+  drawBranch(ctx, x, y, l, -Math.PI/2, 11, w, menuItems, gameObjects);
 })

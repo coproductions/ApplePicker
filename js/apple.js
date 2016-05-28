@@ -1,5 +1,3 @@
-var gameObjects = [];
-
 var gameObject = function(x, y, radius, ctx){
   var gravity = 0;
   var self = {
@@ -31,7 +29,7 @@ var gameObject = function(x, y, radius, ctx){
       self.ctx.closePath();
     }
   };
-  gameObjects.push(self);
+  gameObjects.still.push(self);
   return self;
 };
 
