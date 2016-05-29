@@ -1,3 +1,4 @@
+'use strict';
 My.vector = function(x, y){
 
   var self = {
@@ -9,6 +10,7 @@ My.vector = function(x, y){
     scale : function(scale){
       self.vx *= scale;
       self.vy *= scale;
+      return self;
     },
 
     // add  and subtract methods addd or sub two vector with/from each other
@@ -68,6 +70,7 @@ My.canon = function(x, y, ctx){
       //move method points the angle of the canon toward the cursor using arctangent (trigonometry)
     move : function(){
         angle = Math.atan2(my - self.y, mx - self.x);
+        return false;
       },
 
     draw : function(){
@@ -103,7 +106,6 @@ My.canon = function(x, y, ctx){
     // create event listener for firing a canonball when mouse is clicked
     ctx.canvas.onclick = function(evt){
 
-      console.log(My)
       //create a vector from the click event
       var vector = My.vector(mx - self.x, my - self.y);
       var length = vector.normalize();
@@ -125,8 +127,10 @@ My.bullet = function ( x, y, vector, ctx){
     x : x,
     y : y,
     landed : false,
+    moving: true,
     color: 'black',
     radius: (ctx.canvas.height/500) * 5,
+    vector: vector,
 
     //move() changes the position with velocity and check is the bullet has landed
     move: function(){
@@ -138,9 +142,11 @@ My.bullet = function ( x, y, vector, ctx){
       if(self.y > ctx.canvas.height - 30){
         self.landed = true;
       }
+      return true;
     },
 
-    draw: function(){
+    draw: function(context){
+      ctx = context || ctx;
       ctx.beginPath();
       ctx.arc(self.x, self.y, self.radius, 0, Math.PI * 2, true);
       ctx.fillStyle = self.color;

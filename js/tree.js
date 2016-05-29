@@ -1,3 +1,5 @@
+'use strict';
+
 // recursive branch drawing function, resulting in a tree
 My.drawBranch = function(contexts, startX, startY, len, angle, iterations, brnchWdth){
   var rand = Math.random,
