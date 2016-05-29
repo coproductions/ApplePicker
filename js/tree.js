@@ -1,5 +1,5 @@
 // recursive branch drawing function, resulting in a tree
-var drawBranch = function(ctx, startX, startY, len, angle, iterations, brnchWdth){
+My.drawBranch = function(ctx, startX, startY, len, angle, iterations, brnchWdth){
   var rand = Math.random,
     maxBranch = 3,
     maxAngle = Math.PI / 2,
@@ -32,14 +32,13 @@ var drawBranch = function(ctx, startX, startY, len, angle, iterations, brnchWdth
    //Basecase, if remaining iterations has reached 0
     if(!iterations){
      // if menu items are available, and distance is sufficient from last apple, draw an apple
-      if(menuItems.length
-        && Math.abs(startX - lastApple.x) > len *10
-        && Math.abs(startY - lastApple.y) > len *10
+      if(My.menuItems.length
+        && Math.abs(startX - My.lastApple.x) > len *10
+        && Math.abs(startY - My.lastApple.y) > len *10
       ){
-        console.log('inside if')
-        var item = menuItems.pop();
-        lastApple = new Apple(startX, startY, 7+len/2, ctx, item);
-        lastApple.draw();
+        var item = My.menuItems.pop();
+        My.lastApple = new My.apple(startX, startY, 7+len/2, ctx, item);
+        My.lastApple.draw();
       }
       return;
     }
@@ -53,7 +52,7 @@ var drawBranch = function(ctx, startX, startY, len, angle, iterations, brnchWdth
         for (var i = 0; i < subBranches; i++) {
        newAngle = angle + rand() * maxAngle - maxAngle / 2;
        newLen = len * (0.69 + rand() * 0.3);
-       drawBranch(ctx, endX, endY, newLen, newAngle, iterations, brnchWdth);
+       My.drawBranch(ctx, endX, endY, newLen, newAngle, iterations, brnchWdth);
     }
    },300)
 

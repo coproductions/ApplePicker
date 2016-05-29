@@ -1,4 +1,4 @@
-var gameObject = function(x, y, radius, ctx){
+My.gameObject = function(x, y, radius, ctx){
   var gravity = 0;
   var self = {
     x : x,
@@ -29,12 +29,13 @@ var gameObject = function(x, y, radius, ctx){
       self.ctx.closePath();
     }
   };
-  gameObjects.still.push(self);
+  My.stillObjects.push(self);
   return self;
 };
 
-var Apple = function(x, y, radius, ctx, menuItem){
-  var self = gameObject(x, y, radius, ctx);
+My.apple = function(x, y, radius, ctx, menuItem){
+  var self = My.gameObject(x, y, radius, ctx);
+  self.type = 'apple';
   self.color = menuItem.color;
   self.menuItem = menuItem;
   return self;
