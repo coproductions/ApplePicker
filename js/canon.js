@@ -63,6 +63,7 @@ My.canon = function(x, y, ctx){
     y : y,
     angle : 0,
     radius : (ctx.canvas.height / 500 ) * 15,
+    color: 'black',
 
       //move method points the angle of the canon toward the cursor using arctangent (trigonometry)
     move : function(){
@@ -84,6 +85,7 @@ My.canon = function(x, y, ctx){
         ctx.moveTo (0,0);
         ctx.beginPath();
         ctx.arc(0, 0, self.radius, 0, Math.PI * 2, true);
+        ctx.fillStyle = self.color;
         ctx.fill();
         ctx.closePath();
         ctx.restore();
@@ -118,12 +120,12 @@ My.canon = function(x, y, ctx){
 
 My.bullet = function ( x, y, vector, ctx){
   var gravity = 0;
-
   var self = {
     type: 'bullet',
     x : x,
     y : y,
     landed : false,
+    color: 'black',
     radius: (ctx.canvas.height/500) * 5,
 
     //move() changes the position with velocity and check is the bullet has landed
@@ -141,8 +143,10 @@ My.bullet = function ( x, y, vector, ctx){
     draw: function(){
       ctx.beginPath();
       ctx.arc(self.x, self.y, self.radius, 0, Math.PI * 2, true);
+      ctx.fillStyle = self.color;
       ctx.fill();
       ctx.closePath();
+      ctx.restore();
     }
   }
 

@@ -1,44 +1,49 @@
-My.gameObject = function(x, y, radius, ctx){
+My.apple = function(x, y, radius, ctx, menuItem){
   var gravity = 0;
+  var vector = My.vector(0,0);
   var self = {
+    type: 'apple',
+    menuItem: menuItem,
+    color: menuItem.color,
     x : x,
     y : y,
     radius : radius,
     landed : false,
-    color : 'black',
-    ctx : ctx,
+    vector: vector,
 
 // update the position, and check if landed
     move : function(){
-      vector.vy += gravity; // increase gravity with time and add to velocity
+      // only move if the apple as been hit, and it's vector altered
+      if(!self.vector.vx || !self.vector.vy) return;
+      self.vector.vy += gravity; // increase gravity with time and add to velocity
       gravity += 0.1;
-      self.x += vector.vx;    // adjust vector position
-      self.y += vector.vy;
+      self.x += self.vector.vx;    // adjust vector position
+      self.y += self.vector.vy;
 
       //when object hits the ground, mask as landed
-      if (self.y > canvas.height - 10){
+      if (self.y > ctx.still.canvas.height - 10){
         self.landed = true;
       }
     },
 // method to draw object centered on it's position
     draw : function(){
-      self.ctx.beginPath();
-      self.ctx.arc(self.x, self.y, radius, 0, Math.PI * 2, true);
-      self.ctx.fillStyle = self.color;
-      self.ctx.fill();
-      self.ctx.closePath();
+      ctx.beginPath();
+      ctx.arc(self.x, self.y, radius, 0, Math.PI * 2, true);
+      ctx.fillStyle = self.color;
+      ctx.fill();
+      ctx.closePath();
     }
   };
-  My.stillObjects.push(self);
+  My.movingObjects.push(self);
   return self;
 };
 
-My.apple = function(x, y, radius, ctx, menuItem){
-  var self = My.gameObject(x, y, radius, ctx);
-  self.type = 'apple';
-  self.color = menuItem.color;
-  self.menuItem = menuItem;
-  return self;
+// My.apple = function(x, y, radius, ctx, menuItem){
+//   var self = My.movingObject(x, y, radius, ctx);
+//   self.type = 'apple';
+//   self.color = menuItem.color;
+//   self.menuItem = menuItem;
+//   return self;
 
-};
+// };
 

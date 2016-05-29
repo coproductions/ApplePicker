@@ -1,6 +1,7 @@
 // recursive branch drawing function, resulting in a tree
-My.drawBranch = function(ctx, startX, startY, len, angle, iterations, brnchWdth){
+My.drawBranch = function(contexts, startX, startY, len, angle, iterations, brnchWdth){
   var rand = Math.random,
+    ctx = contexts.still,
     maxBranch = 3,
     maxAngle = Math.PI / 2,
     newLen,
@@ -37,7 +38,7 @@ My.drawBranch = function(ctx, startX, startY, len, angle, iterations, brnchWdth)
         && Math.abs(startY - My.lastApple.y) > len *10
       ){
         var item = My.menuItems.pop();
-        My.lastApple = new My.apple(startX, startY, 7+len/2, ctx, item);
+        My.lastApple = new My.apple(startX, startY, 7+len/2, contexts.dynamic, item);
         My.lastApple.draw();
       }
       return;
@@ -52,7 +53,7 @@ My.drawBranch = function(ctx, startX, startY, len, angle, iterations, brnchWdth)
         for (var i = 0; i < subBranches; i++) {
        newAngle = angle + rand() * maxAngle - maxAngle / 2;
        newLen = len * (0.69 + rand() * 0.3);
-       My.drawBranch(ctx, endX, endY, newLen, newAngle, iterations, brnchWdth);
+       My.drawBranch(contexts, endX, endY, newLen, newAngle, iterations, brnchWdth);
     }
    },300)
 
