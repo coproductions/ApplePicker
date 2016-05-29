@@ -1,27 +1,6 @@
 'use strict';
 var My = {};
 
-My.menuItems = [
-  {
-    title: 'contact',
-    url: '/contact',
-    color: 'blue',
-    target: 'html/contact.html'
-  },
-  {
-    title: 'about',
-    url : '/about',
-    color : 'orange',
-    target: 'html/about.html'
-  },
-  {
-    title : 'resume',
-    url : '/resume',
-    color : 'red',
-    target: 'html/resume.html'
-  }
-];
-
 // keeps track of the last apple placed on the tree, in order to spread apples
 My.lastApple = {x:0, y:0};
 
@@ -32,7 +11,8 @@ My.movingObjects = [];
 $(document).ready(function(){
 
   // adjust canvas and branch size to current window
-  var cSize = $(".treeWrapper").innerWidth();
+  var cSize = $(".tree-wrapper").innerWidth();
+  $(".tree-wrapper").css({'height':cSize +'px'})
   var canvasStill = $("#tree")[0];
   var canvasDynamic = $("#dynamic")[0];
 
@@ -84,6 +64,9 @@ $(document).ready(function(){
             if(Math.abs(o.x - t.x) < t.radius && Math.abs(o.y - t.y) < t.radius){
               console.log(o.type,'collided with',t.color,' ',t.type);
               t.vector.add(o.vector.scale(0.5));
+              if(t.menuItem){
+                My.activateLink(t.menuItem.target);
+              }
               break;
             }
           }
