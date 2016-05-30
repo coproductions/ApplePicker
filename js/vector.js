@@ -28,9 +28,8 @@ My.vector = function(x, y){
       return Math.sqrt(self.vx * self.vx + self.vy * self.vy);
     },
 
-    //lengthSqured returns the sqare of the length, which is faster and sufficint for comparisons
-    lengthSquared : function(){
-      return self.vx * self.vx + self.vy * self.vy;
+    angle: function(){
+      return Math.atan2(self.vy, self.vx);
     },
 
     //rotate the vector , angle is in radians

@@ -77,6 +77,8 @@ My.Bullet = function ( x, y, vector, ctx){
   this.radius = (ctx.canvas.height/500) * 4;
   this.vector = vector;
   this.ctx = ctx;
+  this.startAngle = 0;
+  this.endAngle = Math.PI * 2;
 };
 
 My.Bullet.prototype.type = 'bullet';
@@ -87,9 +89,10 @@ My.Bullet.prototype.move = function(){
   this.gravity += 0.1;  //increase gravity over time, would need a maximum to emulate real life
   this.x += this.vector.vx; //update bullet position
   this.y += this.vector.vy;
-  //as cannonbal hits the ground, mark it as landed.
-  if(this.y > this.ctx.canvas.height * 0.93){
+  //as cannonbal hits the ground, mark it as landed and run impact method.
+  if(this.y > this.ctx.canvas.height * 0.91){
     this.landed = true;
+    this.impact();
   }
   return true;
 };
@@ -97,9 +100,15 @@ My.Bullet.prototype.move = function(){
 My.Bullet.prototype.draw = function(context){
   this.ctx = context || this.ctx;
   this.ctx.beginPath();
-  this.ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, true);
+  this.ctx.arc(this.x, this.y, this.radius, this.startAngle, this.endAngle, false);
   this.ctx.fillStyle = this.color;
   this.ctx.fill();
   this.ctx.closePath();
   this.ctx.restore();
+};
+// impact buries the bullet in the ground relative to it's downward velocity, by adjusting the arcs start and end angles
+My.Bullet.prototype.impact = function(){
+  var bottom = Math.PI/2;
+  this.startAngle = bottom + this.vector.vy/90 ;
+  this.endAngle = bottom - this.vector.vy/90;
 };
