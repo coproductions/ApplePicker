@@ -66,5 +66,12 @@ My.activateLink = function(target){
   My.alertTimeoutId = window.setTimeout(function(){
     $('.alert-text').fadeOut();
   },3000);
+
+  //add click event to contact link to enable contact widget
+  $('.contact').click(function(){
+    if(!$('.contact').hasClass('inactive')){
+      $('.keyreply-launcher').show();
+    }
+  })
 };
 
