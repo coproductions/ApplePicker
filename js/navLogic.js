@@ -3,7 +3,7 @@
 My.menuItems = [
   {
     title: 'contact',
-    color: 'blue',
+    color: 'orange',
     target: '.contact'
   },
   {
@@ -13,7 +13,7 @@ My.menuItems = [
   },
   {
     title : 'resume',
-    color : 'orange',
+    color : 'blue',
     target: '.resume'
   },
     {
@@ -72,7 +72,8 @@ My.activateLink = function(target){
   $('.contact').click(function(){
     if(!$('.contact').hasClass('inactive')){
       $('#keyreply-container').show();
+      $('.keyreply-launcher').click();
     }
-  })
+  });
 };
 
