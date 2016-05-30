@@ -24,7 +24,7 @@ My.apple = function(x, y, radius, ctx, menuItem){
       self.y += self.vector.vy;
 
       //when object hits the ground, mask as landed
-      if (self.y > ctx.canvas.height - 20){
+      if (self.y > ctx.canvas.height *0.9){
         self.landed = true;
       }
       return true;

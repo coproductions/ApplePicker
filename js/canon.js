@@ -56,7 +56,7 @@ My.canon = function(x, y, ctx){
       var length = vector.normalize();
 
       // increase speed proportional to the log of the distance of the click from the canont
-      vector.scale(2.9 * Math.log2(length));
+      vector.scale(3 * Math.log2(length));
       //scale
 
       //create a new bullet and add it to the movingObjects array
@@ -84,7 +84,7 @@ My.bullet = function ( x, y, vector, ctx){
       self.x += vector.vx; //update bullet position
       self.y += vector.vy;
       //as cannonbal hits the ground, mark it as landed.
-      if(self.y > ctx.canvas.height - 30){
+      if(self.y > ctx.canvas.height * 0.93){
         self.landed = true;
       }
       return true;

@@ -21,22 +21,25 @@ $(document).ready(function(){
 
   contexts.still = canvasStill.getContext("2d");
   contexts.dynamic = canvasDynamic.getContext("2d");
-  var x = cSize/2;
-  var y = cSize - 10;
-  var l = cSize/14;
-  var w = cSize/60;
+
+
 
   canvasStill.width = cSize;
   canvasStill.height = cSize;
   canvasDynamic.width = cSize;
   canvasDynamic.height = cSize;
 
+  //determine the start coordinates and sizes for the tree
+  var x = cSize/2;
+  var y = cSize * 0.9;
+  var l = cSize/14;
+  var w = cSize/60;
 
 
   // draw the tree and apples
   My.drawBranch(contexts, x, y, l, -Math.PI/2, 11, w, My.menuItems);
 
-  var newCanon = My.canon(cSize * 0.1, cSize  * 0.93, contexts.dynamic);
+  var newCanon = My.canon(cSize * 0.1, cSize  * 0.9, contexts.dynamic);
   My.movingObjects.push(newCanon)
   newCanon.draw();
 
@@ -75,8 +78,15 @@ $(document).ready(function(){
     }
   },30);
 
+  //show alert message when user clicks on inactive link, fade after 2 seconds
   $('.inactive').click(function(){
-    $('.alert-text').html(My.inactiveText()).delay(2000).fadeOut(1000);
-    $('.alert-text').show()
+    window.clearTimeout(My.alertTimeoutId);
+    $('.alert-text').clearQueue();
+    $('.alert-text').html(My.inactiveText());
+    $('.alert-text').show();
+    My.alertTimeoutId = window.setTimeout(function(){
+      console.log('timed out');
+      $('.alert-text').fadeOut();
+    },2000);
   });
 })

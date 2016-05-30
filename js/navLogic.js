@@ -8,12 +8,12 @@ My.menuItems = [
   },
   {
     title: 'about',
-    color : 'orange',
+    color : 'red',
     target: '.about'
   },
   {
     title : 'resume',
-    color : 'red',
+    color : 'orange',
     target: '.resume'
   },
     {
@@ -40,13 +40,32 @@ My.successText = function(){
   'Pretty Good!',
   'You got it!'
   ];
+  var remaining = $('a.inactive').length;
+  if(remaining ==1){
+    opt = [
+      'Almost there!',
+      'Last One!',
+      'Only one to go!'
+    ];
+  }
+  if(!remaining){
+    opt = [
+      'Well done, you have full access!',
+      'Too Good!'
+    ];
+  }
   return opt[Math.floor(Math.random() * opt.length)];
 };
 
-//activates the target link and removes attached click event
+//activates the target link and removes attached click event, also displays a fading congrats text
 My.activateLink = function(target){
+   window.clearTimeout(My.alertTimeoutId);
   $(target).removeClass('inactive').off('click');
-  $('.alert-text').show()
-  $('.alert-text').html(My.successText()).delay(2000).fadeOut(1000);
+  $('.alert-text').html(My.successText());
+  $('.alert-text').show();
+  My.alertTimeoutId = window.setTimeout(function(){
+    console.log('timed out');
+    $('.alert-text').fadeOut();
+  },2000);
 };
 

@@ -31,7 +31,6 @@ canvas {
     background: #fff;
     z-index: 99;
     border-top: 1px solid #eee;
-    border-bottom: 1px solid #eee;
     text-align: center;
 }
 .navbar-list{
@@ -39,7 +38,8 @@ canvas {
 }
 .navbar-item{
   margin-bottom: 0rem;
-  float: left;
+  border-bottom: 1px solid #eee;
+
 }
 li .navbar-link {
 
@@ -56,20 +56,46 @@ li .navbar-link {
 li .about{
   color: red;
 }
-li .inactive.about{
-  color: ff9999;
-  color: black;
+li .contact{
+  color: blue;
 }
-li .inactive.resume{
-  color: green;
+li .resume{
+  color: darkorange;
 }
-li .inactive.contact{
-  color: darkblue;
+li .code{
+  color: purple;
+}
+li .inactive{
+  opacity: 0.2;
 }
  a.inactive{
   pointer-events: none;
  }
-.blurred{
-  filter: grayscale(50%);
-  -webkit-filter: ;
+
+/* Mobile first queries */
+
+/* Larger than mobile */
+@media (min-width: 400px) {
+  .navbar{
+    /*display: block;*/
+    padding: 0,20,0,20;
+    width: 100%;
+    height: 6.5rem;
+    background: #fff;
+    z-index: 99;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    text-align: center;
+  }
+
+  .navbar-list{
+    list-style: none;
+  }
+
+  .navbar-item{
+    margin-bottom: 0rem;
+    float: left;
+
+  }
+
 }
