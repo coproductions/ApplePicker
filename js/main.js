@@ -74,4 +74,9 @@ $(document).ready(function(){
       }
     }
   },30);
+
+  $('.inactive').click(function(){
+    $('.alert-text').html(My.inactiveText()).delay(2000).fadeOut(1000);
+    $('.alert-text').show()
+  });
 })
