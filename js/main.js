@@ -1,4 +1,6 @@
 'use strict';
+
+//GLOBAL SCOPE
 var My = {};
 
 // keeps track of the last apple placed on the tree, in order to spread apples
@@ -63,7 +65,15 @@ $(document).ready(function(){
           if(j != i && My.movingObjects[j].type != 'canon'){
             var t = My.movingObjects[j];
             if(Math.abs(o.x - t.x) < t.radius && Math.abs(o.y - t.y) < t.radius){
-              t.vector.add(o.vector.scale(0.5));
+              t.vector.add(o.vector.scale(0.5)); //adds collision vector to target
+
+              //allow collision to affect the colliding object too
+              var collVector = My.vector(o.x - t.x, o.y - t.y);
+              collVector.normalize();
+              collVector.scale(0.5);
+              o.vector.subtract(collVector);
+
+              //if the item is an apple, activate the link
               if(t.menuItem){
                 My.activateLink(t.menuItem.target);
               }

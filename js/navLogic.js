@@ -26,8 +26,9 @@ My.menuItems = [
 //returns a random  text when user clicks on inactive link
 My.inactiveText = function(){
   var opt = [
-  'To activate the link, shoot the apple!',
-  'You need to earn your way first.'
+  'To activate the link, shoot the right apple!',
+  'You need to earn your access.',
+  "Not so fast. First pick a fruit"
   ];
   return opt[Math.floor(Math.random() * opt.length)];
 };
