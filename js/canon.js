@@ -1,4 +1,5 @@
 'use strict';
+
 My.canon = function(x, y, ctx){
   var mx = 0;
   var my = 0;
@@ -56,10 +57,8 @@ My.canon = function(x, y, ctx){
       var length = vector.normalize();
 
       // increase speed proportional to the log of the canvas size of the click from the canont
-      var speed = (2 * Math.log2(length)) + (ctx.canvas.width/60);
+      var speed = (2 * Math.log2(length)) + (ctx.canvas.width/70);
       vector.scale(speed);
-      //vector.scale(ctx.canvas.width/30 );
-      //scale
 
       //create a new bullet and add it to the movingObjects array
       My.movingObjects.push(My.bullet(self.x, self.y, vector, ctx));
