@@ -60,7 +60,7 @@ My.successText = function(){
 
 //activates the target link and removes attached click event, also displays a fading congrats text
 My.activateLink = function(target){
-   window.clearTimeout(My.alertTimeoutId);
+  window.clearTimeout(My.alertTimeoutId);
   $(target).removeClass('inactive').off('click');
   $('.alert-text').html(My.successText());
   $('.alert-text').show();
@@ -68,12 +68,12 @@ My.activateLink = function(target){
     $('.alert-text').fadeOut();
   },3000);
 
-  //add click event to contact link to enable contact widget
-  $('a.contact').click(function(){
-    if(!$('a.contact').hasClass('inactive')){
-      $('#keyreply-container').show();
-      $('.keyreply-launcher').click();
-    }
-  });
+  // //add click event to contact link to enable contact widget
+  // $('a.contact').click(function(){
+  //   if(!$('a.contact').hasClass('inactive')){
+  //     $('#keyreply-container').show();
+  //     $('.keyreply-launcher').click();
+  //   }
+  // });
 };
 
