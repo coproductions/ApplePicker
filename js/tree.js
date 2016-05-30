@@ -40,8 +40,11 @@ My.drawBranch = function(contexts, startX, startY, len, angle, iterations, brnch
         && Math.abs(startY - My.lastApple.y) > len *10
       ){
         var item = My.menuItems.pop();
-        My.lastApple = new My.apple(startX, startY, 7+len/2, contexts.dynamic, item);
+        My.lastApple = new My.Apple(startX, startY, 7+len/2, contexts.dynamic, item);
+        My.movingObjects.push(My.lastApple);
         My.lastApple.draw();
+
+
       }
       return;
     }

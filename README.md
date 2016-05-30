@@ -9,3 +9,4 @@ todo:
 - add sounds
 - draw real apples
 - create a bounce and effect on landing
+- easter egg
