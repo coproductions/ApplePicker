@@ -74,7 +74,7 @@ My.Bullet = function ( x, y, vector, ctx){
   this.landed  = false;
   this.moving = true;
   this.color = 'black';
-  this.radius = (ctx.canvas.height/500) * 5;
+  this.radius = (ctx.canvas.height/500) * 4;
   this.vector = vector;
   this.ctx = ctx;
 };
