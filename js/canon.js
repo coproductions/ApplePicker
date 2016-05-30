@@ -89,8 +89,16 @@ My.Bullet.prototype.move = function(){
   this.gravity += 0.1;  //increase gravity over time, would need a maximum to emulate real life
   this.x += this.vector.vx; //update bullet position
   this.y += this.vector.vy;
-  //as cannonbal hits the ground, mark it as landed and run impact method.
+
+  //as bullet hits the ground
   if(this.y > this.ctx.canvas.height * 0.91){
+    console.log(this.vector)
+  //if bullet hits the ground sideways, let it roll
+    if(this.vector.vy < 30 && this.vector.vx > 5){
+      this.roll();
+      return;
+    }
+    //otherwise mark it as landed and run impact method.
     this.landed = true;
     this.impact();
   }
@@ -108,7 +116,15 @@ My.Bullet.prototype.draw = function(context){
 };
 // impact buries the bullet in the ground relative to it's downward velocity, by adjusting the arcs start and end angles
 My.Bullet.prototype.impact = function(){
+  var downWardV = this.vector.vy;
+  if(downWardV <= 0) return; //validate y vector is not negative or 0, in which case impact would not apply;
   var bottom = Math.PI/2;
-  this.startAngle = bottom + this.vector.vy/90 ;
-  this.endAngle = bottom - this.vector.vy/90;
+  this.startAngle = bottom + downWardV/90 ;
+  this.endAngle = bottom - downWardV/90;
+};
+
+//roll bounces the the bullet upward slightly by a constant value, and decreases the x velocity by half
+My.Bullet.prototype.roll = function(){
+  this.vector.vy = -5;
+  this.vector.vx *= 0.5;
 };
