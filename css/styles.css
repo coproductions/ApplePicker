@@ -80,6 +80,10 @@ li .inactive{
   pointer-events: none;
  }
 
+#keyreply-container{
+  display: none;
+}
+
 /* Mobile first queries */
 
 /* Larger than mobile */
