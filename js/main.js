@@ -10,7 +10,7 @@ My.movingObjects = [];
 // run when all files and DOM are fully loaded
 $(document).ready(function(){
 
-  // adjust canvas and branch size to current window
+  // adjust canvas and branch sizes to current window
   var cSize = $(".tree-wrapper").innerWidth();
   $(".tree-wrapper").css({'height':cSize +'px'})
   var canvasStill = $("#tree")[0];
@@ -18,11 +18,8 @@ $(document).ready(function(){
 
   var contexts = {};
 
-
   contexts.still = canvasStill.getContext("2d");
   contexts.dynamic = canvasDynamic.getContext("2d");
-
-
 
   canvasStill.width = cSize;
   canvasStill.height = cSize;
@@ -39,6 +36,7 @@ $(document).ready(function(){
   // draw the tree and apples
   My.drawBranch(contexts, x, y, l, -Math.PI/2, 11, w, My.menuItems);
 
+  //draw a cannon and add it to movingObjects
   var newCanon = My.canon(cSize * 0.1, cSize  * 0.9, contexts.dynamic);
   My.movingObjects.push(newCanon)
   newCanon.draw();

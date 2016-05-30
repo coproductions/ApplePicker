@@ -43,12 +43,3 @@ My.apple = function(x, y, radius, ctx, menuItem){
   return self;
 };
 
-// My.apple = function(x, y, radius, ctx, menuItem){
-//   var self = My.movingObject(x, y, radius, ctx);
-//   self.type = 'apple';
-//   self.color = menuItem.color;
-//   self.menuItem = menuItem;
-//   return self;
-
-// };
-

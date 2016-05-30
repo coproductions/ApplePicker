@@ -1,15 +1,23 @@
 .tree-wrapper{
-      display: block;
-
+  display: block;
   margin-top: -25%;
   position: relative;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#8be0f9+0,ffffff+85,ffffff+85,0fbc34+86,a38532+100 */
+  background: rgb(139,224,249); /* Old browsers */
+  background: -moz-linear-gradient(top,  rgba(139,224,249,1) 0%, rgba(255,255,255,1) 85%, rgba(255,255,255,1) 85%, rgba(15,188,52,1) 86%, rgba(163,133,50,1) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top,  rgba(139,224,249,1) 0%,rgba(255,255,255,1) 85%,rgba(255,255,255,1) 85%,rgba(15,188,52,1) 86%,rgba(163,133,50,1) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom,  rgba(139,224,249,1) 0%,rgba(255,255,255,1) 85%,rgba(255,255,255,1) 85%,rgba(15,188,52,1) 86%,rgba(163,133,50,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8be0f9', endColorstr='#a38532',GradientType=0 ); /* IE6-9 */
+
+
 }
 .alert-text{
   position: absolute;
   top: 10%;  /* position the top  edge of the element at the middle of the parent */
   left: 50%; /* position the left edge of the element at the middle of the parent */
-  transform: translate(-50%, -50%); /* This is a shorthand of
-                                         translateX(-50%) and translateY(-50%) */
+  transform: translate(-50%, -50%); /* This is a shorthand of translateX(-50%) and translateY(-50%) */
+  z-index: 10;
+
 }
 canvas {
   position: absolute;
@@ -99,3 +107,4 @@ li .inactive{
   }
 
 }
+

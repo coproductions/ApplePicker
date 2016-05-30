@@ -22,12 +22,12 @@ My.canon = function(x, y, ctx){
         ctx.save();
         ctx.lineWidth = 2;
         ctx.translate(self.x, self.y);
-
         //use the angle we already calculated in the move method
         ctx.rotate(angle);
 
         //draw the barrel
         ctx.strokeRect(0, -5, (self.radius * 2.5 )+ 10, self.radius*0.7);
+        ctx.fill();
 
         //rest canon in a base
         ctx.moveTo (0,0);
