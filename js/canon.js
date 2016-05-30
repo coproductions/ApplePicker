@@ -61,46 +61,45 @@ My.canon = function(x, y, ctx){
       vector.scale(speed);
 
       //create a new bullet and add it to the movingObjects array
-      My.movingObjects.push(My.bullet(self.x, self.y, vector, ctx));
+      My.movingObjects.push(new My.Bullet(self.x, self.y, vector, ctx));
     };
     return self;
 };
 
-My.bullet = function ( x, y, vector, ctx){
-  var gravity = 0;
-  var self = {
-    type: 'bullet',
-    x : x,
-    y : y,
-    landed : false,
-    moving: true,
-    color: 'black',
-    radius: (ctx.canvas.height/500) * 5,
-    vector: vector,
+//Bullet class
+My.Bullet = function ( x, y, vector, ctx){
+  this.gravity = 0;
+  this.x  = x;
+  this.y  = y;
+  this.landed  = false;
+  this.moving = true;
+  this.color = 'black';
+  this.radius = (ctx.canvas.height/500) * 5;
+  this.vector = vector;
+  this.ctx = ctx;
+};
 
-    //move() changes the position with velocity and check is the bullet has landed
-    move: function(){
-      vector.vy += gravity; // add gravity to the movement
-      gravity += 0.1;  //increase gravity over time, would need a maximum to emulate real life
-      self.x += vector.vx; //update bullet position
-      self.y += vector.vy;
-      //as cannonbal hits the ground, mark it as landed.
-      if(self.y > ctx.canvas.height * 0.93){
-        self.landed = true;
-      }
-      return true;
-    },
+My.Bullet.prototype.type = 'bullet';
 
-    draw: function(context){
-      ctx = context || ctx;
-      ctx.beginPath();
-      ctx.arc(self.x, self.y, self.radius, 0, Math.PI * 2, true);
-      ctx.fillStyle = self.color;
-      ctx.fill();
-      ctx.closePath();
-      ctx.restore();
-    }
+//move() changes the position with velocity and check is the bullet has landed
+My.Bullet.prototype.move = function(){
+  this.vector.vy += this.gravity; // add gravity to the movement
+  this.gravity += 0.1;  //increase gravity over time, would need a maximum to emulate real life
+  this.x += this.vector.vx; //update bullet position
+  this.y += this.vector.vy;
+  //as cannonbal hits the ground, mark it as landed.
+  if(this.y > this.ctx.canvas.height * 0.93){
+    this.landed = true;
   }
+  return true;
+};
 
-  return self;
-}
+My.Bullet.prototype.draw = function(context){
+  this.ctx = context || this.ctx;
+  this.ctx.beginPath();
+  this.ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, true);
+  this.ctx.fillStyle = this.color;
+  this.ctx.fill();
+  this.ctx.closePath();
+  this.ctx.restore();
+};

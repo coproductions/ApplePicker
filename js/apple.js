@@ -1,6 +1,6 @@
 'use strict';
 //prototypical inheritance version of Apple object
-My.Apple = function(x, y, radius, ctx, menuItem){
+My.Apple = function(x, y, radius, ctx, menuItem, vector){
     this.ctx = ctx;
     this.menuItem = menuItem;
     this.color = menuItem.color;
@@ -8,7 +8,7 @@ My.Apple = function(x, y, radius, ctx, menuItem){
     this.y  = y;
     this.radius  = radius;
     this.landed  = false;
-    this.vector = My.vector(0,0);
+    this.vector = vector || My.vector(0,0);
     this.moving = false;
 };
 
@@ -21,8 +21,8 @@ My.Apple.prototype.draw = function(context){
   this.ctx.fillStyle = this.color;
   this.ctx.fill();
   this.ctx.closePath();
-};
 
+};
 My.Apple.prototype.move = function(){
   // only move if the apple as been hit, and it's vector altered
   if(!this.vector.vx || !this.vector.vy) return false;
