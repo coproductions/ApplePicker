@@ -83,7 +83,7 @@ $(document).ready(function(){
         }
       }
     }
-  },30);
+  },20);
 
   //show alert message when user clicks on inactive link, fade after 2 seconds
   $('.inactive').click(function(){
