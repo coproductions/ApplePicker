@@ -71,8 +71,8 @@ My.activateLink = function(target){
   //add click event to contact link to enable contact widget
   if($(target).hasClass('contact') && $(target).is('a')){
     $('#keyreply-container').show();
-    $(target).off('click');
-    $(target).click(function(){
+    $(target).off('click'); // clear previous alert message click event
+    $(target).click(function(){ // allow contact button to toggle keyreply widget
       $('.keyreply-launcher').click();
     })
   }
