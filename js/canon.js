@@ -56,7 +56,7 @@ My.canon = function(x, y, ctx){
       var length = vector.normalize();
 
       // increase speed proportional to the log of the distance of the click from the canont
-      vector.scale(3.5 * Math.log2(length));
+      vector.scale(2.9 * Math.log2(length));
       //scale
 
       //create a new bullet and add it to the movingObjects array

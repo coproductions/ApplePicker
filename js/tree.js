@@ -57,6 +57,6 @@ My.drawBranch = function(contexts, startX, startY, len, angle, iterations, brnch
        newLen = len * (0.69 + rand() * 0.3);
        My.drawBranch(contexts, endX, endY, newLen, newAngle, iterations, brnchWdth);
     }
-   },300)
+   },100)
 
 };

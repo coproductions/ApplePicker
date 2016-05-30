@@ -3,21 +3,23 @@
 My.menuItems = [
   {
     title: 'contact',
-    url: '/contact',
     color: 'blue',
     target: '.contact'
   },
   {
     title: 'about',
-    url : '/about',
     color : 'orange',
     target: '.about'
   },
   {
     title : 'resume',
-    url : '/resume',
     color : 'red',
     target: '.resume'
+  },
+    {
+    title : 'code',
+    color : 'purple',
+    target: '.code'
   }
 ];
 
@@ -41,9 +43,9 @@ My.successText = function(){
   return opt[Math.floor(Math.random() * opt.length)];
 };
 
-//activates the target link
+//activates the target link and removes attached click event
 My.activateLink = function(target){
-  $(target).removeClass('inactive');
+  $(target).removeClass('inactive').off('click');
   $('.alert-text').show()
   $('.alert-text').html(My.successText()).delay(2000).fadeOut(1000);
 };
