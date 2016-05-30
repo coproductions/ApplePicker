@@ -70,7 +70,7 @@ My.activateLink = function(target){
   //add click event to contact link to enable contact widget
   $('.contact').click(function(){
     if(!$('.contact').hasClass('inactive')){
-      $('.keyreply-launcher').show();
+      $('#keyreply-container').show();
     }
   })
 };

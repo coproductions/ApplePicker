@@ -86,8 +86,4 @@ $(document).ready(function(){
     },2000);
   });
 
-  //hide contact widget until active contact link is clicked
-  $('.keyreply-launcher').hide();
-
-
 });
