@@ -83,7 +83,7 @@ li .inactive{
 /* Mobile first queries */
 
 /* Larger than mobile */
-@media (min-width: 400px) {
+@media (min-width: 405px) {
   .navbar{
     /*display: block;*/
     padding: 0,20,0,20;

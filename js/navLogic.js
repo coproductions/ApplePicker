@@ -64,8 +64,7 @@ My.activateLink = function(target){
   $('.alert-text').html(My.successText());
   $('.alert-text').show();
   My.alertTimeoutId = window.setTimeout(function(){
-    console.log('timed out');
     $('.alert-text').fadeOut();
-  },2000);
+  },3000);
 };
 

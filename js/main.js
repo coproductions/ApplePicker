@@ -63,7 +63,6 @@ $(document).ready(function(){
           if(j != i && My.movingObjects[j].type != 'canon'){
             var t = My.movingObjects[j];
             if(Math.abs(o.x - t.x) < t.radius && Math.abs(o.y - t.y) < t.radius){
-              console.log(o.type,'collided with',t.color,' ',t.type);
               t.vector.add(o.vector.scale(0.5));
               if(t.menuItem){
                 My.activateLink(t.menuItem.target);
@@ -83,7 +82,6 @@ $(document).ready(function(){
     $('.alert-text').html(My.inactiveText());
     $('.alert-text').show();
     My.alertTimeoutId = window.setTimeout(function(){
-      console.log('timed out');
       $('.alert-text').fadeOut();
     },2000);
   });
