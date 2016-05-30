@@ -68,12 +68,11 @@ My.activateLink = function(target){
     $('.alert-text').fadeOut();
   },3000);
 
-  // //add click event to contact link to enable contact widget
-  // $('a.contact').click(function(){
-  //   if(!$('a.contact').hasClass('inactive')){
-  //     $('#keyreply-container').show();
-  //     $('.keyreply-launcher').click();
-  //   }
-  // });
+  //add click event to contact link to enable contact widget
+  $('a.contact').click(function(){
+    if(!$('a.contact').hasClass('inactive')){
+      $('#keyreply-container').show();
+    }
+  });
 };
 
