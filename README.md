@@ -1,9 +1,11 @@
 #Apple Picker
 
-A gamified navigation menu written in pure JavaScript using vectors, a little bit of trigonometry and the html5 canvas.
+A gamified navigation menu written in pure JavaScript using vectors and the html5 canvas.
+Featuring a recursive tree, a canon, and a little bit of trigonometry.
+Check it out in action: [go to site](http://codeisnatural.com/).
 
 
 todo:
-1.add sounds
-2.draw real apples
-3. create a bounce and effect on landing
+- add sounds
+- draw real apples
+- create a bounce and effect on landing
