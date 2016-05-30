@@ -92,7 +92,6 @@ My.Bullet.prototype.move = function(){
 
   //as bullet hits the ground
   if(this.y > this.ctx.canvas.height * 0.91){
-    console.log(this.vector)
   //if bullet hits the ground sideways, let it roll
     if(this.vector.vy < 30 && this.vector.vx > 5){
       this.roll();

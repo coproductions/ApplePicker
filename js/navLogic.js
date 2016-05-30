@@ -4,22 +4,22 @@ My.menuItems = [
   {
     title: 'contact',
     color: 'orange',
-    target: '.contact'
+    target: 'a.contact'
   },
   {
     title: 'about',
     color : 'red',
-    target: '.about'
+    target: 'a.about'
   },
   {
     title : 'resume',
     color : 'blue',
-    target: '.resume'
+    target: 'a.resume'
   },
     {
     title : 'code',
     color : 'purple',
-    target: '.code'
+    target: 'a.code'
   }
 ];
 
@@ -69,10 +69,14 @@ My.activateLink = function(target){
   },3000);
 
   //add click event to contact link to enable contact widget
-  $('a.contact').click(function(){
-    if(!$('a.contact').hasClass('inactive')){
-      $('#keyreply-container').show();
-    }
-  });
+  if($(target).hasClass('contact') && $(target).is('a')){
+    $('#keyreply-container').show();
+    $(target).off('click');
+    $(target).click(function(){
+      $('.keyreply-launcher').click();
+    })
+  }
 };
+
+
 

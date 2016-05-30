@@ -1,5 +1,16 @@
 'use strict';
 
+
+//  Apple Picker
+// File Dependencies: navLogic.js, tree.js, apple.js, vector.js, styles.css, jquery, skeleton
+//Classes: tree, Apple, Vector, canon, Bullet
+
+//This file instantiates the objects, and draws them on two seperate superimposed canvases.
+//Objects are seperated into still or moving.
+//Then loops continously and updates moving objects positions.
+//Each moving object's movement is determined by a Vector.
+
+
 //GLOBAL SCOPE
 var My = {};
 
