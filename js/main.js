@@ -103,7 +103,7 @@ $(document).ready(function(){
         o.explode(this);
       }
     }
-  },10);
+  },30);
 
   //show alert message when user clicks on inactive link
   $('.inactive').click(function(){
