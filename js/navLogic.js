@@ -61,16 +61,8 @@ My.successText = function(){
 //activates the target link and removes attached click event, also displays a fading congrats text
 My.activateLink = function(target){
 
-  window.clearTimeout(My.alertTimeoutId);
   $(target).removeClass('inactive');
   $(target).off('click'); // remove alert message click event from li and a (both targets)
-
-  //show success message and fade out after some 3 seconds
-  // $('.alert-text').html(My.successText());
-  // $('.alert-text').show();
-  // My.alertTimeoutId = window.setTimeout(function(){
-  //   $('.alert-text').fadeOut();
-  // },3000);
 
   //when the contact link is activated add click event to contact a tag to enable contact widget toggle
   if($(target).hasClass('contact')){
