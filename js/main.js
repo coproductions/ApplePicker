@@ -55,7 +55,7 @@ $(document).ready(function(){
   newCanon.draw();
 
   //loop through all elements of the movingObjects array and update their position, or move to still objects if it has landed
-  var mainLoop = setInterval(function(){
+  My.mainLoop = setInterval(function(){
     contexts.dynamic.clearRect(0,0,canvasDynamic.height,canvasDynamic.width)
 
     // loop throuqh each moving object and redraw it with updated position
@@ -93,6 +93,13 @@ $(document).ready(function(){
             }
           }
         }
+      }
+
+      // if bullet hits canon (it's origin coordinates)  explode
+      if(o.type == 'bullet' &&
+          Math.abs(o.x - o.originX) < 5  &&
+          o.y > o.originY){
+        o.explode(this);
       }
     }
   },20);

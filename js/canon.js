@@ -69,9 +69,23 @@ My.canon = function(x, y, ctx){
   return self;
 };
 
+My.brokenCanon = function(x, y, ctx){
+  var self = {
+    x: x,
+    y: y,
+    radius : (ctx.canvas.height / 500 ) * 15,
+    draw: function(){
+   //coming soon
+    }
+  };
+  return self;
+};
+
 //Bullet class
 My.Bullet = function ( x, y, vector, ctx){
   this.gravity = 0;
+  this.originX = x;
+  this.originY = y;
   this.x  = x;
   this.y  = y;
   this.landed  = false;
@@ -129,4 +143,9 @@ My.Bullet.prototype.impact = function(){
 My.Bullet.prototype.roll = function(){
   this.vector.vy = -5;
   this.vector.vx *= 0.5;
+};
+
+My.Bullet.prototype.explode = function(loop){
+  console.log('BOOOM!');
+
 };

@@ -26,7 +26,7 @@ My.Apple.prototype.draw = function(context){
 };
 My.Apple.prototype.move = function(){
   // only move if the apple as been hit, and it's vector altered
-  if(!this.vector.vx || !this.vector.vy) return false;
+  if(!this.vector.vx || !this.vector.vy) return false; // return false as apple is not moving, and cannot actively collide
   this.vector.vy += this.gravity; // increase gravity with time and add to velocity
   this.gravity += 0.2;
   this.x += this.vector.vx;    // adjust vector position
