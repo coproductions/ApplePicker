@@ -61,7 +61,10 @@ My.successText = function(){
 //activates the target link and removes attached click event, also displays a fading congrats text
 My.activateLink = function(target){
   window.clearTimeout(My.alertTimeoutId);
-  $(target).removeClass('inactive').off('click');
+  $(target).removeClass('inactive');
+  $(target).off('click'); // remove alert message click event from li and a (both targets)
+
+  //show success message and fade out after some 3 seconds
   $('.alert-text').html(My.successText());
   $('.alert-text').show();
   My.alertTimeoutId = window.setTimeout(function(){
@@ -71,7 +74,6 @@ My.activateLink = function(target){
   //add click event to contact link to enable contact widget
   if($(target).hasClass('contact') && $(target).is('a')){
     $('#keyreply-container').show();
-    $(target).off('click'); // clear previous alert message click event
     $(target).click(function(){ // allow contact button to toggle keyreply widget
       $('.keyreply-launcher').click();
     })
