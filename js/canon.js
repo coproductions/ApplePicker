@@ -53,7 +53,7 @@ My.canon = function(x, y, ctx){
     ctx.canvas.onclick = function(evt){
 
       //create a vector from the click event
-      var vector = My.vector(mx - self.x, my - self.y);
+      var vector = new My.Vector(mx - self.x, my - self.y);
       var length = vector.normalize();
 
       // increase speed proportional to the log of the canvas size of the click from the canont

@@ -79,7 +79,9 @@ $(document).ready(function(){
               t.vector.add(o.vector.scale(0.5)); //adds collision vector to target
 
               //allow collision to affect the colliding object too
-              var collVector = My.vector(o.x - t.x, o.y - t.y);
+              //var collVector = My.vector(o.x - t.x, o.y - t.y);
+              var collVector = new My.Vector(o.x - t.x, o.y - t.y);
+
               collVector.normalize();
               collVector.scale(0.5);
               o.vector.subtract(collVector);

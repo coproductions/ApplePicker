@@ -8,7 +8,8 @@ My.Apple = function(x, y, radius, ctx, menuItem, vector){
     this.y  = y;
     this.radius  = radius;
     this.landed  = false;
-    this.vector = vector || My.vector(0,0);
+    this.vector = vector || new My.Vector(0,0);
+
     this.moving = false;
 };
 
