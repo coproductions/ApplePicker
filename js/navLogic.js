@@ -71,10 +71,10 @@ My.activateLink = function(target){
     $('.alert-text').fadeOut();
   },3000);
 
-  //add click event to contact link to enable contact widget
-  if($(target).hasClass('contact') && $(target).is('a')){
+  //when the contact link is activated add click event to contact a tag to enable contact widget toggle
+  if($(target).hasClass('contact')){
     $('#keyreply-container').show();
-    $(target).click(function(){ // allow contact button to toggle keyreply widget
+    $('a.contact').click(function(){ // allow contact button to toggle keyreply widget
       $('.keyreply-launcher').click();
     })
   }
