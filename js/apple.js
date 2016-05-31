@@ -40,13 +40,14 @@ My.Apple.prototype.move = function(){
 };
 //if  bounce function is called continously until apple comes to rest
 My.Apple.prototype.bounce = function(){
+
   // base case, if apple is rebounding ignore
   if(this.vector.vy < 0){
     return;
+
   //bascase if downward ball has slowed down sufficiently, mark as landed
-  } else if(this.vector.vy < 1){
-    this.vector.vy = 0;
-    if(this.vector.vx < 0.1){
+  } else if(this.vector.vy < 0.5){
+    if(this.vector.vx < 0.2){
       this.landed = true;
       return;
     }

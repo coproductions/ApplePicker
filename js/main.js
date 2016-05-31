@@ -85,8 +85,9 @@ $(document).ready(function(){
               collVector.scale(0.5);
               o.vector.subtract(collVector);
 
-              //if the item is an apple, activate the link
-              if(t.menuItem){
+              //if the item is an apple, display text and activate the link
+              if(t.menuItem && !t.landed){
+                My.displayText(My.successText());
                 My.activateLink(t.menuItem.target);
               }
               break;
@@ -104,15 +105,9 @@ $(document).ready(function(){
     }
   },20);
 
-  //show alert message when user clicks on inactive link, fade after 2 seconds
+  //show alert message when user clicks on inactive link
   $('.inactive').click(function(){
-    window.clearTimeout(My.alertTimeoutId);
-    $('.alert-text').clearQueue();
-    $('.alert-text').html(My.inactiveText());
-    $('.alert-text').show();
-    My.alertTimeoutId = window.setTimeout(function(){
-      $('.alert-text').fadeOut();
-    },2000);
+    My.displayText(My.inactiveText());
   });
 
 });

@@ -60,16 +60,17 @@ My.successText = function(){
 
 //activates the target link and removes attached click event, also displays a fading congrats text
 My.activateLink = function(target){
+
   window.clearTimeout(My.alertTimeoutId);
   $(target).removeClass('inactive');
   $(target).off('click'); // remove alert message click event from li and a (both targets)
 
   //show success message and fade out after some 3 seconds
-  $('.alert-text').html(My.successText());
-  $('.alert-text').show();
-  My.alertTimeoutId = window.setTimeout(function(){
-    $('.alert-text').fadeOut();
-  },3000);
+  // $('.alert-text').html(My.successText());
+  // $('.alert-text').show();
+  // My.alertTimeoutId = window.setTimeout(function(){
+  //   $('.alert-text').fadeOut();
+  // },3000);
 
   //when the contact link is activated add click event to contact a tag to enable contact widget toggle
   if($(target).hasClass('contact')){
@@ -78,6 +79,28 @@ My.activateLink = function(target){
       $('.keyreply-launcher').click();
     })
   }
+};
+
+// shows text for 3 seconds in specified element or .alert-text
+My.displayText = function(text, selector){
+
+  // validate string
+  if(typeof(text) != 'string') {
+    console.log('input not a string');
+    return;
+  }
+
+  var element = selector || '.alert-text'; // default display element
+
+  window.clearTimeout(My.alertTimeoutId); // clear previous fadeout
+
+   //show success message and fade out after some 3 seconds
+  $(element).html(text);
+  $(element).show();
+  My.alertTimeoutId = window.setTimeout(function(){
+    $(element).fadeOut();
+  },3000);
+
 };
 
 
