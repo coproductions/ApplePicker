@@ -42,31 +42,31 @@ My.canon = function(x, y, ctx){
     }
   };
 
-    //start an event listener that records the current mouse position and saves it to the canon object
-    ctx.canvas.onmousemove = function(event){
-      //get the boundary difference of the canvas to the viewport
-      var diff = ctx.canvas.getBoundingClientRect();
-      mx = event.x - diff.left;
-      my = event.y - diff.top;
-    };
+  //start an event listener that records the current mouse position and saves it to the canon object
+  ctx.canvas.onmousemove = function(event){
+    //get the boundary difference of the canvas to the viewport
+    var diff = ctx.canvas.getBoundingClientRect();
+    mx = event.x - diff.left;
+    my = event.y - diff.top;
+  };
 
-    // create event listener for firing a canonball when mouse is clicked
-    ctx.canvas.onclick = function(evt){
+  // create event listener for firing a canonball when mouse is clicked
+  ctx.canvas.onclick = function(evt){
 
-      //create a vector from the click event
-      if(my > self.y) return; //if click event is below the canon return
+    //create a vector from the click event
+    if(my > self.y) return; //if click event is below the canon return
 
-      var vector = new My.Vector(mx - self.x, my - self.y);
-      var length = vector.normalize();
+    var vector = new My.Vector(mx - self.x, my - self.y);
+    var length = vector.normalize();
 
-      // increase speed proportional to the log of the canvas size of the click from the canont
-      var speed = (2 * Math.log2(length)) + (ctx.canvas.width/70);
-      vector.scale(speed);
+    // increase speed proportional to the log of the canvas size of the click from the canont
+    var speed = (2 * Math.log2(length)) + (ctx.canvas.width/70);
+    vector.scale(speed);
 
-      //create a new bullet and add it to the movingObjects array
-      My.movingObjects.push(new My.Bullet(self.x, self.y, vector, ctx));
-    };
-    return self;
+    //create a new bullet and add it to the movingObjects array
+    My.movingObjects.push(new My.Bullet(self.x, self.y, vector, ctx));
+  };
+  return self;
 };
 
 //Bullet class
