@@ -75,7 +75,8 @@ $(document).ready(function(){
         for (var j = 0; j < My.movingObjects.length; j++) {
           if(j != i && My.movingObjects[j].type != 'canon'){
             var t = My.movingObjects[j];
-            if(Math.abs(o.x - t.x) < t.radius && Math.abs(o.y - t.y) < t.radius){
+            // if the two objects are closer than the sum of their radii, collide
+            if(Math.abs(o.x - t.x) < (t.radius + o.radius) && Math.abs(o.y - t.y) < (t.radius + o.radius)){
               t.vector.add(o.vector.scale(0.5)); //adds collision vector to target
 
               //allow collision to affect the colliding object too
