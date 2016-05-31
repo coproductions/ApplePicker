@@ -4,22 +4,22 @@ My.menuItems = [
   {
     title: 'contact',
     color: 'orange',
-    target: 'a.contact'
+    target: '.contact'
   },
   {
     title: 'about',
     color : 'red',
-    target: 'a.about'
+    target: '.about'
   },
   {
     title : 'resume',
     color : 'blue',
-    target: 'a.resume'
+    target: '.resume'
   },
     {
     title : 'code',
     color : 'purple',
-    target: 'a.code'
+    target: '.code'
   }
 ];
 
