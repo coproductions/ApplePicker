@@ -55,13 +55,13 @@ $(document).ready(function(){
   newCanon.draw();
 
   //loop through all elements of the movingObjects array and update their position, or move to still objects if it has landed
-  var action = setInterval(function(){
+  var mainLoop = setInterval(function(){
     contexts.dynamic.clearRect(0,0,canvasDynamic.height,canvasDynamic.width)
 
     // loop throuqh each moving object and redraw it with updated position
     for (var i = 0; i < My.movingObjects.length; i++) {
       var o = My.movingObjects[i];
-      var isMoving = o.move();
+      var canCollide = o.move();
       o.draw();
 
       // if the object has landed, remove it from the moving object list and draw it to the still canvas
@@ -70,8 +70,8 @@ $(document).ready(function(){
         o.draw(contexts.still);
       }
 
-      //if the object is moving, loop through array again and see if it is colliding with any of the other objects except for the canon
-      if(isMoving){
+      //if the object is freely moving it can collide, loop through array again and see if it is colliding with any of the other objects except for the canon
+      if(canCollide){
         for (var j = 0; j < My.movingObjects.length; j++) {
           if(j != i && My.movingObjects[j].type != 'canon'){
             var t = My.movingObjects[j];
@@ -79,7 +79,6 @@ $(document).ready(function(){
               t.vector.add(o.vector.scale(0.5)); //adds collision vector to target
 
               //allow collision to affect the colliding object too
-              //var collVector = My.vector(o.x - t.x, o.y - t.y);
               var collVector = new My.Vector(o.x - t.x, o.y - t.y);
 
               collVector.normalize();

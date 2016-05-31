@@ -3,43 +3,44 @@
 My.canon = function(x, y, ctx){
   var mx = 0;
   var my = 0;
-  var angle = 0;
 
   var self = {
     type: 'canon',
     x : x,
     y : y,
     angle : 0,
-    radius : (ctx.canvas.height / 500 ) * 15,
+    radius : (ctx.canvas.height / 500 ) * 15, //set radious proportionally to canvas size
     color: 'black',
+    angle: 0,
 
-      //move method points the angle of the canon toward the cursor using arctangent (trigonometry)
+    //move method points the angle of the canon toward the cursor using arctangent (trigonometry)
     move : function(){
-        angle = Math.atan2(my - self.y, mx - self.x);
-        return false;
-      },
+      var angle = Math.atan2(my - self.y, mx - self.x);
+      if(angle > 0 && angle < Math.PI) return false; // if angle is below horizontal, don't set the angle
+      self.angle = angle;
+      return false; // return false because this object is not freely moving and can therefore not collide
+    },
 
     draw : function(){
-        ctx.save();
-        ctx.lineWidth = 2;
-        ctx.translate(self.x, self.y);
-        //use the angle we already calculated in the move method
-        ctx.rotate(angle);
+      ctx.save(); //save current settings to the canvas stack
+      ctx.lineWidth = 2;
+      ctx.translate(self.x, self.y);
+      ctx.rotate(self.angle);
 
-        //draw the barrel
-        ctx.strokeRect(0, -5, (self.radius * 2.5 )+ 10, self.radius*0.7);
-        ctx.fill();
+      //draw the barrel
+      ctx.strokeRect(0, -5, self.radius * 2.5 + 10 , self.radius*0.7);
+      ctx.fill();
 
-        //rest canon in a base
-        ctx.moveTo (0,0);
-        ctx.beginPath();
-        ctx.arc(0, 0, self.radius, 0, Math.PI * 2, true);
-        ctx.fillStyle = self.color;
-        ctx.fill();
-        ctx.closePath();
-        ctx.restore();
-      }
-    };
+      //rest canon in a base
+      ctx.moveTo (0,0);
+      ctx.beginPath();
+      ctx.arc(0, 0, self.radius, 0, Math.PI * 2, true);
+      ctx.fillStyle = self.color;
+      ctx.fill();
+      ctx.closePath();
+      ctx.restore(); // restore canvas stack
+    }
+  };
 
     //start an event listener that records the current mouse position and saves it to the canon object
     ctx.canvas.onmousemove = function(event){
@@ -53,6 +54,8 @@ My.canon = function(x, y, ctx){
     ctx.canvas.onclick = function(evt){
 
       //create a vector from the click event
+      if(my > self.y) return; //if click event is below the canon return
+
       var vector = new My.Vector(mx - self.x, my - self.y);
       var length = vector.normalize();
 
